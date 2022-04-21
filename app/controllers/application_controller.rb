@@ -20,9 +20,23 @@ class ApplicationController < ActionController::Base
     render({ :template => "form_templates/square_root".html_safe })
   end
 
+  def square_root_results
+    #Pull the page square_root
+    @num = params.fetch("number").to_i
+    @num_root = Math.sqrt(@num)   
+    render({ :template => "form_templates/square_root_results".html_safe })
+  end
+
   def square
     #Pull the page square
     render({ :template => "form_templates/square".html_safe })
+  end
+
+  def square_results
+    #Produce square results
+    @num = params.fetch("number").to_i
+    @num_square = @num * @num
+    render({ :template => "form_templates/square_results".html_safe })
   end
 
 
