@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def square_root_results
     #Pull the page square_root
-    @num = params.fetch("number").to_i
+    @num = params.fetch("number").to_f
     @num_root = Math.sqrt(@num)   
     render({ :template => "form_templates/square_root_results".html_safe })
   end
