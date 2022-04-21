@@ -7,7 +7,7 @@
     APR
   </dt>
   <dd>
-    <%=@apr%>%
+    <%=@apr.to_s( :percentage, {:precision =>4} )%>
   </dd>
 
   <dt>
@@ -21,14 +21,14 @@
     Principal
   </dt>
   <dd>
-    <%=@principal%>
+    <%=@principal.to_s(:currency)%>
   </dd>
 
   <dt>
     Payment
   </dt>
   <dd>
-    $<%=@payment.round(2)%>
+    <%=@payment.to_s(:currency)%>
   </dd>
 </dl>
 
