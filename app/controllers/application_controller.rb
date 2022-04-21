@@ -10,9 +10,26 @@ class ApplicationController < ActionController::Base
     render({ :template => "form_templates/pay_me".html_safe })
   end
 
+  def payment_result
+    #Calculate the monthly payment
+    @apr = params.fetch("apr").to_f
+    @numyears = params.fetch("numyears").to_i
+    @principal = params.fetch("principal").to_f
+    @payment = (@principal*((1+@apr/100)**@numyears))/(@numyears*12)
+    render({ :template => "form_templates/payment_result".html_safe })
+  end
+
   def rando
     #Pull the page rando
     render({ :template => "form_templates/rando".html_safe })
+  end
+
+  def rando_result
+    #Pull the page rando
+    @min = params.fetch("lower").to_f
+    @max = params.fetch("upper").to_i
+    @randnum = rand((@min..@max))
+    render({ :template => "form_templates/rando_result".html_safe })
   end
 
   def square_root
@@ -21,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def square_root_results
-    #Pull the page square_root
+    #Produce the root
     @num = params.fetch("number").to_f
     @num_root = Math.sqrt(@num)   
     render({ :template => "form_templates/square_root_results".html_safe })
