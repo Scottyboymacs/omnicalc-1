@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   def square_results
     #Produce square results
-    @num = params.fetch("number").to_i
+    @num = params.fetch("number").to_f
     @num_square = @num * @num
     render({ :template => "form_templates/square_results".html_safe })
   end
